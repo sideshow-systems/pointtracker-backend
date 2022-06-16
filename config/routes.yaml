@@ -1,3 +1,7 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+
+games:
+    path: /api/games/get
+    controller: App\Controller\GamesController::getGames
