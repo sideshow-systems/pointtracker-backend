@@ -2,6 +2,10 @@ controllers:
     resource: ../src/Controller/
     type: attribute
 
-games:
-    path: /api/games/get
-    controller: App\Controller\GamesController::getGames
+getGames:
+    path: /api/games/get/{id}
+    controller: App\Controller\GamesController::getGamesById
+
+addGame:
+    path: /api/games/add/{id}
+    controller: App\Controller\GamesController::addGameById

@@ -1,21 +1,30 @@
 <?php
 namespace App\Controller;
 
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
-class GamesController {
+class GamesController extends AbstractController {
 
-	public function getGames(): Response {
-		$games = [1,2,3,4,5];
-		return new Response(json_encode($games));
+	public function getGamesById(int $id): JsonResponse {
+		return $this->json([$id]);
+	}
+
+	public function addGameById(int $id, Request $request): JsonResponse {
+
+
+
+		$data = json_decode($request->getContent())->data;
+		return $this->json([$id, $data]);
 	}
 
 
-	public function number(): Response {
-		$number = random_int(0, 100);
+	// public function number(): Response {
+	// 	$number = random_int(0, 100);
 
-		return new Response(
-			'<html><body>Lucky number: ' . $number . '</body></html>'
-		);
-	}
+	// 	return new Response(
+	// 		'<html><body>Lucky number: ' . $number . '</body></html>'
+	// 	);
+	// }
 }
